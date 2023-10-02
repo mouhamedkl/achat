@@ -1,0 +1,100 @@
+# Spring Boot
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# IDE-specific files
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Logs
+log/
+*.log
+
+# Compiled class files
+*.class
+
+# Maven build directories
+/target/
+/target/classes/
+/target/test-classes/
+/target/site/
+/target/generated-sources/
+/target/generated-test-sources/
+/target/maven-status/
+
+# Gradle build directories
+/build/
+/out/
+
+# Dependencies
+/.idea/
+.gradle/
+/.gradle/
+build/
+bin/
+tmp/
+node_modules/
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Eclipse specific
+*.pydevproject
+.project
+.metadata/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*.swt
+*.nail
+.recommenders
+
+# IntelliJ IDEA specific
+*.iml
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/usage.statistics.xml
+.idea/dictionaries
+.idea/inspectionProfiles
+.idea/caches
+
+# NetBeans specific
+nbproject/
+nb-configuration.xml
+
+# Visual Studio Code specific
+.vscode/
+.history/
+
+# Windows files
+Thumbs.db
+Desktop.ini
+
+# macOS files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.har
+*.ipr
+*.iws
+*.cls
+*.alz
+*.whl
+*.egg
+*.egg-info/
+Écrire à Safwen M'rad
+
+
