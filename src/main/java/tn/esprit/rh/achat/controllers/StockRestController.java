@@ -65,7 +65,6 @@ public class StockRestController {
 	//@Scheduled(cron = "*/60 * * * * *")
 	//@GetMapping("/retrieveStatusStock")
 //	@ResponseBody
-//		stockService.retrieveStatusStock();
-//	}
+
 
 }

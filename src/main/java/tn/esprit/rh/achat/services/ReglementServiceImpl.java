@@ -40,7 +40,6 @@ public class ReglementServiceImpl implements IReglementService {
 
 		
 //		ou bien(Sans JPQL)
-//		return (List<Reglement>) f.getReglements();
 	}
 
 	@Override
