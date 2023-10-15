@@ -10,7 +10,7 @@ public interface ISecteurActiviteService {
 
 	SecteurActivite addSecteurActivite(SecteurActivite sa);
 
-	void deleteSecteurActivite(Long id);
+	String deleteSecteurActivite(Long id);
 
 	SecteurActivite updateSecteurActivite(SecteurActivite sa);
 

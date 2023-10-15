@@ -3,8 +3,8 @@ package tn.esprit.rh.achat.controllers;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import tn.esprit.rh.achat.entities.CategorieProduit;
 import tn.esprit.rh.achat.services.ICategorieProduitService;
+import tn.esprit.rh.achat.entities.CategorieProduit;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import java.util.List;
 public class CategorieProduitController {
 
 	@Autowired
-	ICategorieProduitService categorieProduitService;
+    ICategorieProduitService categorieProduitService;
 	
 	// http://localhost:8089/SpringMVC/categorieProduit/retrieve-all-categorieProduit
 	@GetMapping("/retrieve-all-categorieProduit")

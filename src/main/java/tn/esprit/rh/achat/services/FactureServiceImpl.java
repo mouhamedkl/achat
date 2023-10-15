@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.rh.achat.entities.*;
 import tn.esprit.rh.achat.repositories.*;
+import tn.esprit.rh.achat.entities.*;
+import tn.esprit.rh.achat.repositories.*;
 
 import javax.transaction.Transactional;
 import java.util.Date;
@@ -79,7 +81,7 @@ public class FactureServiceImpl implements IFactureService {
 		facture.setArchivee(true);
 		factureRepository.save(facture);
 		//Méthode 02 (Avec JPQL)
-		factureRepository.updateFacture(factureId);
+		//.updateFacture(factureId);
 	}
 
 	@Override

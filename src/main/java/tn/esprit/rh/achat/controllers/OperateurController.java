@@ -3,8 +3,8 @@ package tn.esprit.rh.achat.controllers;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import tn.esprit.rh.achat.entities.Operateur;
 import tn.esprit.rh.achat.services.IOperateurService;
+import tn.esprit.rh.achat.entities.Operateur;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ import java.util.List;
 public class OperateurController {
 
 	@Autowired
-	IOperateurService operateurService;
+    IOperateurService operateurService;
 	
 	// http://localhost:8089/SpringMVC/operateur/retrieve-all-operateurs
 	@GetMapping("/retrieve-all-operateurs")
