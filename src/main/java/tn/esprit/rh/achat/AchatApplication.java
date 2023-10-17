@@ -9,7 +9,12 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class AchatApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AchatApplication.class, args);
-    }
+
+//    Dotenv dotenv = Dotenv.configure().load();
+//    System.out.println("DATABASE_URL: " + dotenv.get("DATABASE_URL"));
+//    System.out.println("DATABASE_USERNAME: " + dotenv.get("DATABASE_USERNAME"));
+//    System.out.println("DATABASE_PASSWORD: " + dotenv.get("DATABASE_PASSWORD"));
+    SpringApplication.run(AchatApplication.class, args);
+}
 
 }
