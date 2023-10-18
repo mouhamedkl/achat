@@ -1,7 +1,7 @@
 # Spring Boot
 /target/
 !.mvn/wrapper/maven-wrapper.jar
-
+*.env
 # IDE-specific files
 .idea/
 .vscode/
