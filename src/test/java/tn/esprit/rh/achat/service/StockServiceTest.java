@@ -5,17 +5,14 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import tn.esprit.rh.achat.entities.Stock;
 import tn.esprit.rh.achat.repositories.StockRepository;
 import tn.esprit.rh.achat.services.StockServiceImpl;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -26,55 +23,75 @@ public class StockServiceTest {
     @InjectMocks
     private StockServiceImpl stockService;
 
-    @MockBean
+    @Mock
     private StockRepository stockRepository;
+
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
+    }
+
+    @Test
+    public void testRetrieveAllStocks() {
+        Stock stock1 = new Stock(1L, "Stock 1", 100, 10);
+        Stock stock2 = new Stock(2L, "Stock 2", 200, 20);
+        List<Stock> stocks = List.of(stock1, stock2);
+
+        Mockito.when(stockRepository.findAll()).thenReturn(stocks);
+
+        List<Stock> result = stockService.retrieveAllStocks();
+
+        assertNotNull(result);
+        assertEquals(2, result.size());
+    }
+
+
+    @Test
+    public void testAddStock() {
+        Stock stock = new Stock(1L, "Stock 1", 100, 10);
+        Mockito.when(stockRepository.save(stock)).thenReturn(stock);
+
+        Stock result = stockService.addStock(stock);
+
+        assertNotNull(result);
+        assertEquals(stock, result);
+        System.out.println(stock);
+        System.out.println(result);
+    }
+
+    @Test
+    public void testDeleteStock() {
+        Long stockId = 1L;
+        stockService.deleteStock(stockId);
+
+        Mockito.verify(stockRepository, Mockito.times(1)).deleteById(stockId);
+    }
+
+
+    @Test
+    public void testUpdateStock() {
+        Stock stock = new Stock(1L, "Stock 1", 100, 10);
+        Mockito.when(stockRepository.save(stock)).thenReturn(stock);
+
+        Stock result = stockService.updateStock(stock);
+
+        assertNotNull(result);
+        assertEquals(stock, result);
+    }
+
 
     @Test
     public void testRetrieveStock() {
-        // Define the behavior of the mock repository
-        Mockito.when(stockRepository.findById(1L)).thenReturn(Optional.of(new Stock(1L, "Test Stock", 10, 5)));
+        Long stockId = 1L;
+        Stock stock = new Stock(stockId, "Stock 1", 100, 10);
+        Mockito.when(stockRepository.findById(stockId)).thenReturn(Optional.of(stock));
 
-        // Call the method you want to test
-        Stock stock = stockService.retrieveStock(1L);
+        Stock result = stockService.retrieveStock(stockId);
 
-        // Perform assertions
-        assertNotNull(stock);
-        assertEquals("Test Stock", stock.getLibelleStock());
-        assertEquals(Integer.valueOf(10), stock.getQte());
-        assertEquals(Integer.valueOf(5), stock.getQteMin());
-        System.out.println("Retrieve Stock test works !");
+        assertNotNull(result);
+        assertEquals(stock, result);
     }
 
-
-
-
-
-
-//
-//        @Mock
-//        StockRepository stockRepository;
-//
-//        @InjectMocks
-//        StockServiceImpl stockService;
-//
-//        Stock stock = new Stock(1L,"stock1", 10, 5);
-//
-//        List<Stock> stocks = new ArrayList<Stock>() {
-//            {
-//                add(new Stock(2L ,"stock2", 10, 5));
-//                add(new Stock(3L ,"stock3", 20, 10));
-//                add(new Stock(4L ,"stock4", 30, 15));
-//            }
-//        };
-//
-//        @Test
-//        public void testRetrieveUser() {
-//
-//            Mockito.when(stockRepository.findById(1L)).thenReturn(Optional.of(stock));
-//            Stock stock1 = stockService.retrieveStock(1L);
-//            Assertions.assertNotNull(stock1);
-//            System.out.println(stock1);
-//        }
-    }
+}
 
 
