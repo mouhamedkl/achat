@@ -9,7 +9,7 @@ ENV APP_JAR="achat-1.0.jar"
 
 # Create a directory for your application
 WORKDIR /app
-
+COPY .env.dev .env
 # Download the application JAR from Nexus using curl with authentication
 RUN apt-get update && apt-get install -y curl \
     && curl -u $NEXUS_USERNAME:$NEXUS_PASSWORD -O $NEXUS_REPO_URL/repository/achat-repo/tn/esprit/rh/achat/1.0/achat-1.0.jar
