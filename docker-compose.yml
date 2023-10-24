@@ -29,5 +29,13 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
+   #Angular app
+  angular-app:
+    image: safwen2022/angular-app:latest
+    container_name: angular-app
+    ports:
+      - "4200:4200"
+    networks:
+      - devops-network-test
 networks:
   devops-network-test:
