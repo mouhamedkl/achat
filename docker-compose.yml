@@ -32,7 +32,7 @@ services:
    #Angular app
   angular-app:
     image: safwen2022/angular-app:latest
-    container_name: angular-app
+    container_name: front-end
     ports:
       - "4200:4200"
     networks:
