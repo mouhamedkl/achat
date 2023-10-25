@@ -3,6 +3,7 @@ version: "3.8"
 services:
   mysqldb:
     image: mysql:5.7
+    container_name: mysqldb
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
       - MYSQL_DATABASE=achat
@@ -11,6 +12,7 @@ services:
     volumes:
       - db:/var/lib/mysql
   app:
+    container_name: app
     depends_on:
       - mysqldb
     build: ./
@@ -30,6 +32,7 @@ services:
     stdin_open: true
     tty: true
   front:
+    container_name: front
     build: ./front
     image: mouhamedkl/front:1.0.0
     ports:
