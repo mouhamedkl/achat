@@ -33,6 +33,6 @@ services:
     build: ./front
     image: mouhamedkl/front:1.0.0
     ports:
-    - 80:4200
+    - 4200:4200
 volumes:
   db :
