@@ -17,7 +17,8 @@ services:
     -  "8089:8089"
     volumes:
       - .m2:/root/.m2
-    depends_on: mysqldb
+    depends_on:
+      - mysqldb
   frontend:
     image:  linakhm87/front-achat:latest-lina
     container_name: achat-front
