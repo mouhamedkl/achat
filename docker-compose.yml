@@ -31,7 +31,7 @@ services:
     ports:
       - "3306:3306"
     networks:
-      - devops-network-test
+      - network1
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 30s
@@ -39,7 +39,7 @@ services:
       retries: 5
    #Angular app
   front-app:
-    image: angular-app:latest
+    image: front-app:latest
     container_name: front-end
     ports:
       - "4200:4200"
