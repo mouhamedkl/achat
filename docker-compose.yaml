@@ -20,7 +20,7 @@ services:
     depends_on:
       - mysqldb
   frontend:
-    image:  linakhm87/front-achat:latest-lina
+    image:  linakhm87/front-achat:latest-front
     container_name: achat-front
     ports:
       - "4200:4200"
