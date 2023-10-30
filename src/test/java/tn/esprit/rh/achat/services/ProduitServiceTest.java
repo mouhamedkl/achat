@@ -35,8 +35,8 @@ public class ProduitServiceTest {
 
     /*@Test
     public void testRetrieveAllProduits() {
-        Produit produit1 = new Produit(1L, "produit1","a" ,100,20/02/2020,20/05/2020); // Adjust fields based on your Produit entity
-        Produit produit2 = new Produit(2L, "produit2","a" ,100,20/02/2020,20/05/2020);
+        Produit produit1 = new Produit(1L, "produit1","a" ,100,"20/02/2020","20/05/2020"); // Adjust fields based on your Produit entity
+        Produit produit2 = new Produit(2L, "produit2","a" ,100,"20/02/2020","20/05/2020");
         List<Produit> produits = List.of(produit1, produit2);
 
         Mockito.when(produitRepository.findAll()).thenReturn(produits);
@@ -49,7 +49,7 @@ public class ProduitServiceTest {
 */
     @Test
     public void testAddProduit() {
-        Produit produit = new Produit(1L, "produit1","a" ,100,20/02/2020,20/05/2020); // Adjust fields based on your Produit entity
+        Produit produit = new Produit(1L, "produit1","a" ,100,"20/02/2020","20/05/2020"); // Adjust fields based on your Produit entity
         Mockito.when(produitRepository.save(produit)).thenReturn(produit);
 
         Produit result = produitService.addProduit(produit);
@@ -68,7 +68,7 @@ public class ProduitServiceTest {
 
     @Test
     public void testUpdateProduit() {
-        Produit produit = new Produit(3L, "produit3","a" ,100,20/02/2020,20/05/2020); // Adjust fields based on your Produit entity
+        Produit produit = new Produit(3L, "produit3","a" ,100,"20/02/2020","20/05/2020"); // Adjust fields based on your Produit entity
         Mockito.when(produitRepository.save(produit)).thenReturn(produit);
 
         Produit result = produitService.updateProduit(produit);
@@ -80,7 +80,7 @@ public class ProduitServiceTest {
     @Test
     public void testRetrieveProduit() {
         Long produitId = 1L;
-        Produit produit = new Produit(1L, "produit1","a" ,100,20/02/2020,20/05/2020); // Adjust fields based on your Produit entity
+        Produit produit = new Produit(1L, "produit1","a" ,100,"20/02/2020","20/05/2020"); // Adjust fields based on your Produit entity
         Mockito.when(produitRepository.findById(produitId)).thenReturn(Optional.of(produit));
 
         Produit result = produitService.retrieveProduit(produitId);
