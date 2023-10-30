@@ -54,8 +54,8 @@ public class ProduitServiceTest {
     
 }
     }
-*/
-    @Test
+
+  @Test
     public void testAddProduit() {
          try{
      SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -73,7 +73,7 @@ public class ProduitServiceTest {
             
         }
     }
-/*
+
     @Test
     public void testDeleteProduit() {
         Long produitId = 1L;
@@ -91,7 +91,7 @@ public class ProduitServiceTest {
 
         assertNotNull(result);
         assertEquals(produit, result);
-    }
+    }*/
 
     @Test
     public void testRetrieveProduit() {
