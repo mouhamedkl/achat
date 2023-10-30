@@ -1,108 +1,76 @@
 package tn.esprit.rh.achat.services;
 
-import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.extension.ExtendWith;
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import tn.esprit.rh.achat.entities.Produit; // Assuming you have a Produit entity
-import tn.esprit.rh.achat.repositories.ProduitRepository; // Assuming you have a ProduitRepository
-import tn.esprit.rh.achat.services.ProduitServiceImpl; // Assuming you have a ProduitServiceImpl
-
-import java.util.List;
+import org.springframework.test.context.junit4.SpringRunner;
+import com.esprit.examen.entities.Produit;
+import com.esprit.examen.repositories.ProduitRepository;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.*;
 
+
+@RunWith(SpringRunner.class)
 @SpringBootTest
-@ExtendWith(MockitoExtension.class)
-public class ProduitServiceTest {
+public class ProduitServiceImplTest {
+	@Autowired
+	IProduitService  ProduitServicee;
+	@Mock 
+	ProduitRepository ProduitRepo;
+	
+	@InjectMocks 
+	ProduitServiceImpl ProduitService;
+	
+	 @Before
+	    public void setup() {
+	        MockitoAnnotations.initMocks(this);
+	    }
+	
+	@Test
+	public void testAddProduit() {
+	//	List<Stock> stocks = stockService.retrieveAllStocks();
+	//	int expected=stocks.size();
+		Produit s = new Produit("produit test",10,"100f");
+		Produit savedStock= ProduitService.addProduit(s);
+		
+	//	assertEquals(expected+1, stockService.retrieveAllStocks().size());
+		assertNotNull(savedStock.getLibelleProduit());
+		ProduitService.deleteProduit(savedStock.getIdProduit());
+		
+	} 
+	
+	 @Test
+	    public void testGetAllProduit() {
+	        List<Produit> toDoList = new ArrayList<Produit>();
+	        toDoList.add(new Produit("produit test2",101,"100f7"));
+	        toDoList.add(new Produit("produit test3",102,"100f6"));
+	        toDoList.add(new Produit("produit test4",104,"100fd"));
+	        when(ProduitRepo.findAll()).thenReturn(toDoList);
 
-    @InjectMocks
-    private ProduitServiceImpl produitService;
+	        List<Produit> result = ProduitService.retrieveAllProduits();
+	        assertEquals(3, result.size());
+	    }
+	 
+	 @Test
+		public void testDeleteStock() {
+		 Produit s = new Produit("produit test2",101,"100f7");
+		 Produit savedStock= ProduitService.addProduit(s);
+		 ProduitService.deleteProduit(savedStock.getIdProduit());
+			assertNull(ProduitService.retrieveProduit(savedStock.getIdProduit()));
+		}
 
-    @Mock
-    private ProduitRepository produitRepository;
-
-    @BeforeEach
-    public void setUp() {
-        MockitoAnnotations.openMocks(this);
-    }
-
-    /*@Test
-    public void testRetrieveAllProduits() {
-   try{
-     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        Date dateCreation = dateFormat.parse("20/02/2020");
-        Date dateDerniereModification = dateFormat.parse("20/05/2020");
-        Produit produit1 = new Produit(1L, "produit1","a" ,100,dateCreation,dateDerniereModification); // Adjust fields based on your Produit entity
-        Produit produit2 = new Produit(2L, "produit2","a" ,100,dateCreation,dateDerniereModification);
-        List<Produit> produits = List.of(produit1, produit2);
-
-        Mockito.when(produitRepository.findAll()).thenReturn(produits);
-
-        List<Produit> result = produitService.retrieveAllProduits();
-
-        assertNotNull(result);
-        assertEquals(2, result.size());
-    }
-    catch(ParseException e){
-    
-}
-    }
-
-  @Test
-    public void testAddProduit() {
-         try{
-     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        Date dateCreation = dateFormat.parse("20/02/2020");
-        Date dateDerniereModification = dateFormat.parse("20/05/2020");
-        Produit produit = new Produit(1L, "produit1","a" ,100,dateCreation,dateDerniereModification); // Adjust fields based on your Produit entity
-        Mockito.when(produitRepository.save(produit)).thenReturn(produit);
-
-        Produit result = produitService.addProduit(produit);
-
-        assertNotNull(result);
-        assertEquals(produit, result);
-    }
-        catch(ParseException e){
-            
-        }
-    }
-
-    @Test
-    public void testDeleteProduit() {
-        Long produitId = 1L;
-        produitService.deleteProduit(produitId);
-
-        Mockito.verify(produitRepository, Mockito.times(1)).deleteById(produitId);
-    }
-
-    @Test
-    public void testUpdateProduit() {
-        Produit produit = new Produit(3L, "produit3","a" ,100,"20/02/2020","20/05/2020"); // Adjust fields based on your Produit entity
-        Mockito.when(produitRepository.save(produit)).thenReturn(produit);
-
-        Produit result = produitService.updateProduit(produit);
-
-        assertNotNull(result);
-        assertEquals(produit, result);
-    }*/
-
-    @Test
-    public void testRetrieveProduit() {
-        Long produitId = 1L;
-        Produit produit = new Produit(1L, "produit1","a" ,100,"20/02/2020","20/05/2020"); // Adjust fields based on your Produit entity
-        Mockito.when(produitRepository.findById(produitId)).thenReturn(Optional.of(produit));
-
-        Produit result = produitService.retrieveProduit(produitId);
-
-        assertNotNull(result);
-        assertEquals(produit, result);
-    }
-    
+	
+	
 }
