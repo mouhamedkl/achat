@@ -49,14 +49,13 @@ public class Produit implements Serializable {
 	private CategorieProduit categorieProduit;
 	
 
-public Produit(Long idProduit, String codeProduit, String libelleProduit, float prix, Date dateCreation, Date dateDerniereModification) {
-    this.idProduit = idProduit;
-    this.codeProduit = codeProduit;
-    this.libelleProduit = libelleProduit;
-    this.prix = prix;
-    this.dateCreation = dateCreation;
-    this.dateDerniereModification = dateDerniereModification;
-}
+public Produit(String libelleProduit, float prix, String codeProduit) {
+		super();
+		this.libelleProduit = libelleProduit;
+		this.prix = prix;
+		this.codeProduit = codeProduit;
+	}
+
 	
 
 }
