@@ -1,0 +1,36 @@
+version: "2"
+services:
+  db:
+    container_name: mysql
+    image: mysql:8.0.31
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=achatdb
+    ports:
+      - 3306:3306
+
+
+  server :
+    depends_on:
+      - db
+    container_name: server
+    build:
+      context : ./../achat
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8087:8087"
+    hostname: servertest
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/achatdb?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+    image: "server"
+    stdin_open: true
+    tty: true
+
+
+
+
+
+
