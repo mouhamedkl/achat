@@ -14,9 +14,6 @@ services:
     depends_on:
       - db
     container_name: server
-    build:
-      context : ./../achat
-      dockerfile: Dockerfile
     restart: always
     ports:
       - "8087:8087"
