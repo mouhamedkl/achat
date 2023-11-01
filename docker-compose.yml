@@ -13,16 +13,19 @@ services:
   server :
     depends_on:
       - db
-    container_name: server
+    container_name: achatserver
     restart: always
     ports:
       - "8087:8087"
-    hostname: servertest
+    hostname: achatserver
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/achatdb?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=root
-    image: "server"
+       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/achatdb?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+       SPRING_DATASOURCE_USERNAME: root
+       SPRING_DATASOURCE_PASSWORD: root
+       NEXUS_USERNAME: admin
+       NEXUS_PASSWORD: nexus
+      
+    image: "serverachat"
     stdin_open: true
     tty: true
 
