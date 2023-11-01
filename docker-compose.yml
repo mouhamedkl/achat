@@ -26,7 +26,6 @@ services:
        NEXUS_USERNAME: admin
        NEXUS_PASSWORD: nexus
       
-    image: "server"
     stdin_open: true
     tty: true
 
