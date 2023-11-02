@@ -29,6 +29,11 @@ services:
     stdin_open: true
     tty: true
 
+  client:
+    image: angular-oueslati:1.0 
+    container_name: angular
+    ports:
+      - "4200:4200"
 
 
 
