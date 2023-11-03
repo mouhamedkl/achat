@@ -12,6 +12,9 @@ public class SecteurActiviteServiceImpl implements ISecteurActiviteService{
 
 	@Autowired
 	SecteurActiviteRepository secteurActiviteRepository;
+
+
+
 	@Override
 	public List<SecteurActivite> retrieveAllSecteurActivite() {
 		return (List<SecteurActivite>) secteurActiviteRepository.findAll();
