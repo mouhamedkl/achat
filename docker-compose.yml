@@ -2,7 +2,7 @@ version: '3'
 services:
   # Spring Boot application
   backend-app:
-    image: test:latest
+    image: oueslati-achat:latest
     container_name: achatserver
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/achatdb?useUnicode=true&useJDBCCompliantTimezoneShift=true&createDatabaseIfNotExist=true&useLegacyDatetimeCode=false&serverTimezone=UTC
@@ -39,7 +39,7 @@ services:
       retries: 5
    #Angular app
   front-app:
-    image: mdaziz/oueslati-achat:latest
+    image:  angular-oueslati:1.0
     container_name: angular1
     ports:
       - "4200:4200"
