@@ -16,7 +16,7 @@ services:
       - db
     image: mdaziz/oueslati-achat:latest  
     container_name: achatserver1
-    restart: always
+    restart: on-failure
     ports:
       - "8089:8089"
     hostname: achatserver
