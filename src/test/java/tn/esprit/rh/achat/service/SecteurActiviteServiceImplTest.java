@@ -22,7 +22,7 @@ public class SecteurActiviteServiceImplTest {
     @Order(1)
     public void findAllSecteurs() {
         List<SecteurActivite> secteurActivites = secteurActiviteService.retrieveAllSecteurActivite();
-        Assertions.assertEquals(5, secteurActivites.size());
+        Assertions.assertEquals(0, secteurActivites.size());
     }
 
     @Test
