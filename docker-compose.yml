@@ -14,7 +14,7 @@ services:
 
   server:
     depends_on:
-      - db
+      - mysql
     image: mdaziz/oueslati-achat:latest
     container_name: achatserver1
    # restart: on-failure
