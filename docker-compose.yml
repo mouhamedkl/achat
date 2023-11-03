@@ -15,7 +15,7 @@ services:
     depends_on:
       - db
     image: mdaziz/oueslati-achat:latest  
-    container_name: achatserver
+    container_name: achatserver1
     restart: always
     ports:
       - "8089:8089"
