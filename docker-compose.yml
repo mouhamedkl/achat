@@ -4,8 +4,9 @@ services:
     container_name: mysql
     image: mysql:8.0.31
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=achatdb
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: root
     ports:
       - 3306:3306
 
@@ -31,7 +32,7 @@ services:
 
   client:
     image: angular-oueslati:1.0 
-    container_name: angular
+    container_name: angular1
     ports:
       - "4200:4200"
 
