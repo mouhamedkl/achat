@@ -2,7 +2,7 @@ version: "3"
 services:
   mysql:
     container_name: mysql
-    image: mysql:8.0.31
+    image: mysql:latest
     environment:
       MYSQL_ROOT_PASSWORD: root
 
@@ -14,7 +14,7 @@ services:
   server:
     depends_on:
       - mysql
-    image: mdaziz/oueslati-achat:latest
+    image: mdaziz/oueslati-achat:1.1.1
     container_name: achatserver1
    # restart: on-failure
     ports:
