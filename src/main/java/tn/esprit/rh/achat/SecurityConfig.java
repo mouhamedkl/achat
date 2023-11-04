@@ -20,7 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/SpringMVC/actuator").permitAll() // Permit all requests to /SpringMVC/*
+                .antMatchers("/**").permitAll() // Permit all requests to /SpringMVC/*
                 .anyRequest().permitAll() // Permit all other requests
                 .and()
                 .csrf().disable();
