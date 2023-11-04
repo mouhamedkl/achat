@@ -1,8 +1,8 @@
 version: "3"
 services:
-  mysql:
+  mysqldb:
     container_name: mysql
-    image: mysql:latest
+    image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: root
 
@@ -13,7 +13,7 @@ services:
 
   server:
     depends_on:
-      - mysql
+      - mysqldb
     image: mdaziz/oueslati-achat:1.1.1
     container_name: achatserver1
    # restart: on-failure
@@ -21,7 +21,7 @@ services:
       - "8089:8089"
     environment:
       SPRING_APPLICATION_JSON: '{
-        "spring.datasource.url":"jdbc:mysql://mysql:3306/achatdb?useUnicode=true&useJDBCCompliantTimezoneShift=true&createDatabaseIfNotExist=true&useLegacyDatetimeCode=false&serverTimezone=UTC",        "spring.datasource.username" : "root",
+        "spring.datasource.url":"jdbc:mysql://mysqldb:3306/achatdb?useUnicode=true&useJDBCCompliantTimezoneShift=true&createDatabaseIfNotExist=true&useLegacyDatetimeCode=false&serverTimezone=UTC",        "spring.datasource.username" : "root",
         "spring.datasource.username" : "root",
         "spring.datasource.password" :  "root",
         "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
