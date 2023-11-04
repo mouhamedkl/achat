@@ -21,7 +21,7 @@ services:
 
   # MySQL database
   mysql:
-    image: mysql:5.7²
+    image: mysql:5.7
     container_name: db
     environment:
       MYSQL_ROOT_PASSWORD: root
