@@ -10,8 +10,8 @@ services:
       - 3306:3306
     volumes:
       - db:/var/lib/mysql
-  app:
-    container_name: app
+  backend:
+    container_name: backend
     depends_on:
       - mysqldb
     image: khalilhosni/achat-backend:latest
@@ -29,8 +29,8 @@ services:
       - .m2:/root/.m2
     stdin_open: true
     tty: true
-  front:
-    container_name: front
+  frontend:
+    container_name: frontend
     image: khalilhosni/achat-frontend:latest
     ports:
       - 4200:80
