@@ -2,7 +2,7 @@ version: '3'
 services:
   # Spring Boot application
   backend-app:
-    image: mdaziz/oueslati-achat:latest
+    image: mdaziz/oueslati-achat:3.3.3
     container_name: achat
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/achatdb?useUnicode=true&useJDBCCompliantTimezoneShift=true&createDatabaseIfNotExist=true&useLegacyDatetimeCode=false&serverTimezone=UTC
