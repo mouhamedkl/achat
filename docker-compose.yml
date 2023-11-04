@@ -1,38 +1,43 @@
-version: "3"
+version: '3'
 services:
-  db:
-    container_name: mysql
-    image: mysql:5.7
+  # Spring Boot application
+  backend-app:
+    image: oueslati-achat:1.1.1
+    container_name: achat
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/achatdb?useUnicode=true&useJDBCCompliantTimezoneShift=true&createDatabaseIfNotExist=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      NEXUS_USERNAME: admin
+      NEXUS_PASSWORD: root
+    ports:
+      - "8089:8089"
+   
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - net
+
+  # MySQL database
+  mysql:
+    image: mysql:5.7²
+    container_name: db
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE : achatdb
       MYSQL_USER: admin
       MYSQL_PASSWORD: root
-
+    
     ports:
       - "3306:3306"
     networks:
       - net
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
-  server:
-    depends_on:
-      - db
-    image: mdaziz/oueslati-achat:1.1.1
-    container_name: achatserver
-   # restart: on-failure
-    ports:
-      - "8089:8089"
-    environment:
-
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/achatdb?useUnicode=true&useJDBCCompliantTimezoneShift=true&createDatabaseIfNotExist=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=root
-      
-
-    stdin_open: true
-    tty: true
-    networks:
-      - net
   client:
     image: angular-oueslati:1.0
     container_name: angular1
