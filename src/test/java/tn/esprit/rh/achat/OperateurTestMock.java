@@ -45,7 +45,10 @@ public class OperateurTestMock {
     void testAddOperateur(){
         when(operateurRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(user));
         Operateur p =operateurService.retrieveOperateur(2L);
-        operateurService.addOperateur(p);
+        Operateur u= operateurService.addOperateur(p);
+        assertNotNull(u.getNom());
+        assertNotNull(u.getPrenom());
+        assertNotNull(u.getPassword());
         System.out.println(p);
         System.out.println(" testAddOperateur -> test successfull  !!!!!");
     }
