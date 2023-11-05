@@ -31,7 +31,7 @@ services:
       retries: 5
    #Angular app
   angular-app:
-    image: frontend-artifact:v39
+    image: frontend-artifact:v42
     container_name: front-end
     ports:
       - "5050:80"
