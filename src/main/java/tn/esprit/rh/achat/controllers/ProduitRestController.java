@@ -30,7 +30,11 @@ public class ProduitRestController {
 	public Produit retrieveRayon(@PathVariable("produit-id") Long produitId) {
 		return produitService.retrieveProduit(produitId);
 	}
-
+	@GetMapping("/getmessage")
+	@ResponseBody
+	public String message() {
+		return "med test";
+	}
 	@PostMapping("/add-produit")
 	@ResponseBody
 	public Produit addProduit(@RequestBody Produit p) {
