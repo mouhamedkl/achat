@@ -43,29 +43,19 @@ public class FactureRestController {
         return facture;
     }
 
-    /*
-     * une facture peut etre annulé si elle a été saisie par erreur Pour ce
-     * faire, il suffit de mettre le champs active à false
-     */
-    // http://localhost:8089/SpringMVC/facture/cancel-facture/{facture-id}
+
     @PutMapping("/cancel-facture/{facture-id}")
     @ResponseBody
     public void cancelFacture(@PathVariable("facture-id") Long factureId) {
         factureService.cancelFacture(factureId);
     }
 
-    // http://localhost:8089/SpringMVC/facture/getFactureByFournisseur/{fournisseur-id}
     @GetMapping("/getFactureByFournisseur/{fournisseur-id}")
     @ResponseBody
     public List<Facture> getFactureByFournisseur(@PathVariable("fournisseur-id") Long fournisseurId) {
         return factureService.getFacturesByFournisseur(fournisseurId);
     }
 
-    // http://localhost:8089/SpringMVC/facture/assignOperateurToFacture/1/1
-    @PutMapping(value = "/assignOperateurToFacture/{idOperateur}/{idFacture}")
-    public void assignOperateurToFacture(@PathVariable("idOperateur") Long idOperateur, @PathVariable("idFacture") Long idFacture) {
-        factureService.assignOperateurToFacture(idOperateur, idFacture);
-    }
 
     // http://localhost:8089/SpringMVC/facture/pourcentageRecouvrement/{startDate}/{endDate}
     @GetMapping(value = "/pourcentageRecouvrement/{startDate}/{endDate}")
