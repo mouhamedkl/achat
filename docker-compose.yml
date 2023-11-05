@@ -31,10 +31,10 @@ services:
       retries: 5
    #Angular app
   angular-app:
-    image: safwen2022/angular-app:latest
+    image: frontend-artifact:v39
     container_name: front-end
     ports:
-      - "4200:4200"
+      - "5050:80"
     networks:
       - devops-network-test
 networks:
