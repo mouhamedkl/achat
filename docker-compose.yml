@@ -2,7 +2,7 @@ version: '3'
 services:
   # Spring Boot application
   spring-app:
-    image: safwen2022/backend-image:v188
+    image: safwen2022/backend-image:v189
     container_name: achat
     ports:
       - "8089:8089"
