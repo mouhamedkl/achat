@@ -2,7 +2,7 @@ version: '3'
 services:
   # Spring Boot application
   spring-app:
-    image: backend-image:${DOCKER_IMAGE_TAG}
+    image: backend-image:latest
     container_name: achat
     ports:
       - "8089:8089"
